@@ -75,14 +75,18 @@
 
             tableRow = document.createElement("TR");
             tableCell1 = document.createElement("TD");
-            tableCell2 = document.createElement("TD");    
-            tableCell3 = document.createElement("TD");    
+            tableCell2 = document.createElement("TD");
+            tableCell3 = document.createElement("TD");
             tableCell4 = document.createElement("TD");
 
 
             tableCell1.innerHTML = document.createElement("input type='checkbox'")
-            tableCell2.innerHTML = `${ToDo}`;
-            tableCell3.innerHTML = `${Desc}`;
+            tableText2.createTextNode(ToDo);
+            tableText3.createTextNode(Desc);
+
+            tableCell2.appendChild(tableText2);
+            tableCell3.appendChild(tableText3);
+
 
 
             tableRow.appendChild(tableCell1);

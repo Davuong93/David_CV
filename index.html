@@ -60,20 +60,30 @@
     <div class="center">
         <form onsubmit="return formSubmit(this);">
             <label for="ToDo">Task</label>
-            <input type="text" id="ToDo" name="ToDo!" placeholder="Enter Task..." />
+            <input type="text" id="ToDo" name="ToDo" placeholder="Enter Task..." />
             <label for="Desc">Description</label>
-            <input type="text" id="Desc" name="Description" placeholder="Enter Description" />
+            <input type="text" id="Desc" name="Desc" placeholder="Enter Description" />
             <input type="submit" value="Submit" />
         </form>
     </div>
     <script>
         const inputfield = document.getElementById("nameField");
+
         function formSubmit(this) {
+            const ToDo = form.ToDo.value;
+            const Desc = form.Desc.value;
+
             tableRow = document.createElement("TR");
             tableCell1 = document.createElement("TD");
             tableCell2 = document.createElement("TD");    
             tableCell3 = document.createElement("TD");    
             tableCell4 = document.createElement("TD");
+            
+
+            tableCell1.innerHTML = 
+            tableCell2.innerHTML = `${ToDo}`;
+            tableCell3.innerHTML = `${Desc}`;
+
 
         }
     </script>

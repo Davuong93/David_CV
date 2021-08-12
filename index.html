@@ -69,7 +69,7 @@
     <script>
         const inputfield = document.getElementById("nameField");
 
-        function formSubmit(this) {
+        function formSubmit(form) {
             const ToDo = form.ToDo.value;
             const Desc = form.Desc.value;
 
@@ -83,6 +83,7 @@
             tableCell1.innerHTML = document.createElement("input type='checkbox'")
             tableCell2.innerHTML = `${ToDo}`;
             tableCell3.innerHTML = `${Desc}`;
+
 
             tableRow.appendChild(tableCell1);
             tableRow.appendChild(tableCell2);

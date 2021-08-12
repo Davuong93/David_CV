@@ -68,6 +68,7 @@
     </div>
     <script>
         const inputfield = document.getElementById("nameField");
+        const tableEntry = document.getElementById("myTable")
 
         function formSubmit(form) {
             const ToDo = form.ToDo.value;
@@ -94,7 +95,7 @@
             tableRow.appendChild(tableCell3);
             tableRow.appendChild(tableCell4);
 
-            document.getElementById("myTable").appendChild(tableRow);
+            tableEntry.appendChild(tableRow);
 
             return false;
 

@@ -84,6 +84,15 @@
             tableCell2.innerHTML = `${ToDo}`;
             tableCell3.innerHTML = `${Desc}`;
 
+            tableRow.appendChild(tableCell1);
+            tableRow.appendChild(tableCell2);
+            tableRow.appendChild(tableCell3);
+            tableRow.appendChild(tableCell4);
+
+            document.getElementById("myTable").appendChild(tableRow);
+
+            return false;
+
 
         }
     </script>

@@ -60,9 +60,9 @@
     </div>
     <div class="center">
         <form onsubmit="return formSubmit(this);">
-            <label for="fname">Task</label>
+            <label for="">Task</label>
             <input type="text" id="ToDo" name="ToDo!" placeholder="Enter Task..." />
-            <label for="lname">Description</label>
+            <label for="">Description</label>
             <input type="text" id="Desc" name="Description" placeholder="Enter Description" />
             <input type="submit" value="Submit" />
         </form>
@@ -71,15 +71,15 @@
         const inputfield = document.getElementById("nameField");
         function formSubmit(this) {
             var table = document.getElementByID("myTable");
-            var row = table.insertRow(1)
+            var row = table.insertRow(0)
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             const ToDo = form.ToDo.value;
             const desc = form.Desc.value;
-            cell1.innerHTML = <input class="form-check-input" type="checkbox" value="">
-            cell1.innerHTML = "ToDo";
-            cell2.innerHTML = "desc";
+            cell1.innerHTML = <input class="form-check-input" type="checkbox" value="">;
+            cell2.innerHTML = ToDo;
+            cell3.innerHTML = desc;
             return false;
         }
     </script>

@@ -66,6 +66,7 @@
             <input type="submit" value="Submit" />
         </form>
         <button onclick="myFunction()">Test Click</button>
+        <label> Please Choose a Color!</label>
         <input id="colorField" type="color" value="" placeholder="Enter a colour!"/>
     </div>
     <script>
@@ -104,7 +105,7 @@
         }
         function myFunction() {
             const colorValue = document.getElementById("colorField").value;
-            document.getElementById("header").innerHTML.style.color = colorValue;
+            document.getElementById("header").innerText = colorValue;
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

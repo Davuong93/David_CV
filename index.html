@@ -85,10 +85,23 @@
 
             let input = document.createElement("input")
             input.type = "checkbox"
+            input.id = "accept"
+            const check = document.getElementById("accept");
             tableCell1.appendChild(input)
 
             let tableText2 = document.createTextNode(ToDo);
             let tableText3 = document.createTextNode(Desc);
+
+            function progress() {
+                if (check === check.checked) {
+                    console.log("Completed")
+                } else {
+                    console.log("In Progress")
+                }
+                
+
+            }
+            let tableText3 = document.createTextNode(progress)
             tableCell2.appendChild(tableText2);
             tableCell3.appendChild(tableText3);
 

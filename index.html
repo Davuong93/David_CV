@@ -82,11 +82,12 @@
             tableCell3 = document.createElement("TD");
             tableCell4 = document.createElement("TD");
 
+            let input = document.createElement("input")
+            input.type = "checkbox"
+            tableCell1.appendChild(input)
 
-            tableCell1.innerHTML = document.createElement("input type='checkbox'")
-            tableText2.createTextNode(ToDo);
-            tableText3.createTextNode(Desc);
-
+            let tableText2 = document.createTextNode(ToDo);
+            let tableText3 = document.createTextNode(Desc);
             tableCell2.appendChild(tableText2);
             tableCell3.appendChild(tableText3);
 

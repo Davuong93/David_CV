@@ -60,9 +60,9 @@
     <div class="center">
         <form onsubmit="return formSubmit(this);">
             <label for="ToDo">Task</label>
-            <input type="text" id="ToDo" name="ToDo" placeholder="Enter Task..." />
+            <input type="text" id="toDo" name="ToDo" placeholder="Enter Task..." />
             <label for="Desc">Description</label>
-            <input type="text" id="Desc" name="Desc" placeholder="Enter Description" />
+            <input type="text" id="desc" name="Desc" placeholder="Enter Description" />
             <input type="submit" value="Submit" />
         </form>
         <button onclick="myFunction()">Test Click</button>
@@ -73,50 +73,80 @@
         const inputfield = document.getElementById("nameField");
         const tableEntry = document.getElementById("myTable")
         const colorField = document.getElementById("colorField");
-        function formSubmit(form) {
-            const ToDo = form.ToDo.value;
-            const Desc = form.Desc.value;
+        
+        let toDoItems = []; 
+        
+        function onCheckBoxClicked(entry, index) {
+            toDoItems[index].isDone = !entry.isDone // flip it
+            drawUI()
+        }
 
-            tableRow = document.createElement("TR");
-            tableCell1 = document.createElement("TD");
-            tableCell2 = document.createElement("TD");
-            tableCell3 = document.createElement("TD");
-            tableCell4 = document.createElement("TD");
-
+        function createCheckBox(entry, index) {
             let input = document.createElement("input")
+            input.checked = entry.isDone
             input.type = "checkbox"
-            input.id = "accept"
-            const check = document.getElementById("accept");
-            tableCell1.appendChild(input)
-
-            let tableText2 = document.createTextNode(ToDo);
-            let tableText3 = document.createTextNode(Desc);
-
-            function progress() {
-                if (check.checked === true) {
-                    console.log("Completed")
-                } else {
-                    console.log("In Progress")
-                }
-                
-
+            input.onclick = () => { onCheckBoxClicked(entry, index) }
+            return input
+        }
+        
+        function progressTextNode(isDone) {
+            let text = "";
+            if (isDone) {
+                text = "Completed"
+            } else {
+                text = "In Progress"
             }
-            let tableText3 = document.createTextNode(progress)
+            return document.createTextNode(text);   
+        }
+        
+        function createTableRow(entry, index) {
+            let tableRow = document.createElement("TR");
+            let checkColumn = document.createElement("TD");
+            let tableCell2 = document.createElement("TD");
+            let tableCell3 = document.createElement("TD");
+            let progressColumn = document.createElement("TD");
+
+            checkColumn.appendChild(createCheckBox(entry, index))
+
+            let tableText2 = document.createTextNode(entry.listItem);
+            let tableText3 = document.createTextNode(entry.descItem);
+            let progressColumnText = progressTextNode(entry.isDone);
             tableCell2.appendChild(tableText2);
             tableCell3.appendChild(tableText3);
-            tableCell4.appendChild(progress)
+            progressColumn.appendChild(progressColumnText);
 
-
-
-            tableRow.appendChild(tableCell1);
+            tableRow.appendChild(checkColumn);
             tableRow.appendChild(tableCell2);
             tableRow.appendChild(tableCell3);
-            tableRow.appendChild(tableCell4);
+            tableRow.appendChild(progressColumn);
 
             tableEntry.appendChild(tableRow);
+        }
 
+        function drawUI() {
+            tableEntry.innerHTML = ""
+            toDoItems.forEach((item, index) => {
+                createTableRow(item, index);
+            })
+        }
+        
+        function formSubmit(form) {
+            const toDo = form.ToDo.value;
+            const desc = form.Desc.value;
+            
+            const entry = {
+                listItem: toDo,
+                descItem: desc,
+                isDone: false,
+            }
+            
+            toDoItems.push(entry);
+            
+            drawUI()
+            
             return false;
         }
+        
         function myFunction() {
             const colorValue = document.getElementById("colorField").value;
             document.getElementById("header").style.color = colorValue;

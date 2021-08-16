@@ -77,9 +77,16 @@
 
         let toDoItems = []; 
         
+        if (localStorage.getItem("toDoItems") === null) {
+            toDoItems = [];
+        } else {
+            toDoItems = JSON.parse(localStorage.getItem("toDoItems"))
+            drawUI()
+        }
+
         function onCheckBoxClicked(entry, index) {
-            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
             toDoItems[index].isDone = !entry.isDone // flip it
+            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
             drawUI()
         }
 
@@ -135,7 +142,7 @@
         function formSubmit(form) {
             const toDo = form.ToDo.value;
             const desc = form.Desc.value;
-            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
+            
             
             const entry = {
                 listItem: toDo,
@@ -144,8 +151,9 @@
             }
             
             toDoItems.push(entry);
-            
+            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
             drawUI()
+
             return false;
         }
         

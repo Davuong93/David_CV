@@ -74,6 +74,8 @@
         const tableEntry = document.getElementById("myTable")
         const colorField = document.getElementById("colorField");
         
+        localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
+        
         let toDoItems = []; 
         
         function onCheckBoxClicked(entry, index) {
@@ -133,6 +135,7 @@
         function formSubmit(form) {
             const toDo = form.ToDo.value;
             const desc = form.Desc.value;
+            
             
             const entry = {
                 listItem: toDo,

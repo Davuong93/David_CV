@@ -78,6 +78,7 @@
         let toDoItems = []; 
         
         function onCheckBoxClicked(entry, index) {
+            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
             toDoItems[index].isDone = !entry.isDone // flip it
             drawUI()
         }

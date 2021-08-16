@@ -73,13 +73,13 @@
         const inputfield = document.getElementById("nameField");
         const tableEntry = document.getElementById("myTable")
         const colorField = document.getElementById("colorField");
-        
-        localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
+    
 
         let toDoItems = []; 
         
         function onCheckBoxClicked(entry, index) {
             toDoItems[index].isDone = !entry.isDone // flip it
+            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
             drawUI()
         }
 
@@ -135,7 +135,7 @@
         function formSubmit(form) {
             const toDo = form.ToDo.value;
             const desc = form.Desc.value;
-            
+            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
             
             const entry = {
                 listItem: toDo,

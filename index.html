@@ -79,8 +79,8 @@
         
         function onCheckBoxClicked(entry, index) {
             toDoItems[index].isDone = !entry.isDone // flip it
-            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
             drawUI()
+            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
         }
 
         function createCheckBox(entry, index) {
@@ -135,7 +135,7 @@
         function formSubmit(form) {
             const toDo = form.ToDo.value;
             const desc = form.Desc.value;
-            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
+            
             
             const entry = {
                 listItem: toDo,
@@ -146,8 +146,7 @@
             toDoItems.push(entry);
             
             drawUI()
-            
-            return false;
+            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
         }
         
         function myFunction() {

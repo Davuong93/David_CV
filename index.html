@@ -80,7 +80,6 @@
         function onCheckBoxClicked(entry, index) {
             toDoItems[index].isDone = !entry.isDone // flip it
             drawUI()
-            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
         }
 
         function createCheckBox(entry, index) {
@@ -146,7 +145,6 @@
             toDoItems.push(entry);
             
             drawUI()
-            localstorage.setItem("toDoItems", JSON.stringify(toDoItems));
         }
         
         function myFunction() {

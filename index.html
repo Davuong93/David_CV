@@ -134,7 +134,7 @@
         function formSubmit(form) {
             const toDo = form.ToDo.value;
             const desc = form.Desc.value;
-            
+            localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
             
             const entry = {
                 listItem: toDo,
